@@ -351,10 +351,10 @@ load.table <- function(filename)
  tmp <- scan(file=filename,what='numeric', sep="\t",nlines=1,skip=1)[1]
   if (tmp=="Time" | tmp=="time" | tmp == "TIME") 
     {   line2 <- scan(file=filename,what='numeric', sep="\t",nlines=1,skip=1)
-        time <- as.real(line2[(gene.names.ok+2):length(line2)])        
+        time <- as.double(line2[(gene.names.ok+2):length(line2)])        
         data <- read.table(file=filename,sep="\t",skip=2)
       } else {
-         time <- as.real(0:(length(sample.names)-1))
+         time <- as.double(0:(length(sample.names)-1))
          data <- read.table(file=filename,sep="\t",skip=1)
        }
  
@@ -514,7 +514,7 @@ else {
 #####l <- get("filter.args",nenv)
 l <- filter.args()
 if ((!is.null(l[[1]]))){
-cutoff <- as.real(l$cutoff)
+cutoff <- as.double(l$cutoff)
 eset.tmp <- get("obj", nenv)
 if (!(is.null(eset.tmp))) {
 if (class(eset.tmp) == "ExpressionSet") {
@@ -782,7 +782,7 @@ return()
 lis <- fuzzy.cmeans.args()
 if (!is.null(lis[[1]])) {
 centers <- as.integer(lis$ccenters)
-m <- as.real(lis$mval)
+m <- as.double(lis$mval)
 eset.tmp1 <- get("obj", nenv)
 #centers <- dim(exprs(eset.tmp1))[[2]]
 tmp <- mfuzz(eset.tmp1, centers, m)
@@ -850,7 +850,7 @@ cl.tmp <- get("obj.ccl", nenv)
 lis <- acore.args()
 if (!is.null(lis[[1]])) {
 
-min.acore <- as.real(lis$minacore)
+min.acore <- as.double(lis$minacore)
 
 acore.list <- acore(eset.tmp,cl.tmp,min.acore)
 if (!(is.null(acore.list))) {
@@ -939,7 +939,7 @@ return()
 lis <- kmeans2.args()
 if (!is.null(lis[[1]])) {
 centers <- as.integer(lis$ccenters)
-m <- as.real(lis$it.max)
+m <- as.double(lis$it.max)
 eset.tmp <- get("obj", nenv)
 tmp <- kmeans2(eset.tmp, centers, m)
 if (!(is.null(tmp))) {
@@ -1128,9 +1128,9 @@ return()
 }
 else {
 l <- overlap.plot.args()
-thres <- as.real(l$thres)
+thres <- as.double(l$thres)
 scal <- as.logical(l$scal)
-magni <- as.real(l$mag)
+magni <- as.double(l$mag)
 cl.tmp <- get("obj.ccl", nenv)
 ovl.mat <- get("ovl.matrix",nenv)
 overlap.plot(cl.tmp,ovl.mat,thres,scal,magni)

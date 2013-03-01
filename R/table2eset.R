@@ -15,10 +15,10 @@ table2eset <- function(filename)
  tmp <- scan(file=filename,what='numeric', sep="\t",nlines=1,skip=1)[1]
   if (tmp=="Time" | tmp=="time" | tmp == "TIME") 
     {   line2 <- scan(file=filename,what='numeric', sep="\t",nlines=1,skip=1)
-        time <- as.real(line2[(gene.names.ok+2):length(line2)])        
+        time <- as.double(line2[(gene.names.ok+2):length(line2)])        
         data <- read.table(file=filename,sep="\t",skip=2)
       } else {
-         time <- as.real(0:(length(sample.names)-1))
+         time <- as.double(0:(length(sample.names)-1))
          data <- read.table(file=filename,sep="\t",skip=1)
        }
  
